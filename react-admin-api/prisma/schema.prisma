@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  manager
+  admin
+  kitchen
+  bar
+}
+
+enum Activity {
+  checkIn
+  checkOut
+}
+
+model User {
+  id        String   @id @unique @default(uuid())
+  name      String
+  contact   String
+  address   String
+  birthday  DateTime
+  photo     String
+  email     String   @unique
+  username  String   @unique
+  password  String
+  isCheckIn Boolean  @default(false)
+  role      Role
+  absen     Absen[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Absen {
+  id        String   @id @unique @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activity  Activity
+  createdAt DateTime
+  updatedAt DateTime
+}
+
+model Category {
+  id    String  @id @unique @default(uuid())
+  name  String  @unique
+  Stock Stock[]
+}
+
+enum dimension {
+  milliliter
+  gram
+}
+
+model Stock {
+  id           String    @id @unique @default(uuid())
+  name         String    @unique
+  categoryId   String
+  category     Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  brand        String
+  isActive     Boolean
+  safetyStock  Int
+  currentStock Int
+  netPerPack   Int
+  pricePerPack Int
+  dimension    dimension
+}
