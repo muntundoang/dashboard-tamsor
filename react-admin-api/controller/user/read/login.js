@@ -7,6 +7,9 @@ module.exports = async function (req, res) {
   try {
     const { username, password } = req.body;
 
+    console.log('username ==> ', username)
+    console.log('password ==> ', password)
+
     const userLogin = await prisma.user.findUnique({
       where: {
         username,
