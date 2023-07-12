@@ -1,0 +1,4 @@
+DATABASE_URL="postgresql://username:password@localhost:5432/DBname?schema=public"
+YOUR_CLIENT_ID=
+YOUR_CLIENT_SECRET=
+YOUR_REDIRECT_URL=

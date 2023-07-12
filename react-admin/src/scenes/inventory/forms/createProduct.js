@@ -130,7 +130,6 @@ const AddStockItem = () => {
                 value={values.brand}
                 inputValue={brandValue}
                 onInputChange={(event, newInputValue) => {
-                  event.preventDefault;
                   setBrandValue(newInputValue);
                 }}
                 onBlur={handleBlur}

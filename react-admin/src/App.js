@@ -15,7 +15,7 @@ import LogAbsen from "./scenes/absen";
 // import Pie from "./scenes/pie";
 // import FAQ from "./scenes/faq";
 // import Geography from "./scenes/geography";
-// import Calendar from "./scenes/calendar/calendar";
+import Calendar from "./scenes/calendar/calendar";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -37,8 +37,8 @@ function App() {
             <Route path="/line" element={<Line />} />
             <Route path="/pie" element={<Pie />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/geography" element={<Geography />} />
-            <Route path="/calendar" element={<Calendar />} /> */}
+            <Route path="/geography" element={<Geography />} /> */}
+            <Route path="/calendar" element={<Calendar />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
           <Route path="login" element={<SigninPage />} />
